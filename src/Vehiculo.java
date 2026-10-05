@@ -56,6 +56,8 @@ public abstract class Vehiculo {
     public abstract String licenciaNecesaria();
 
     public abstract int umbralMantenimiento();
-    
+
     public abstract String informacion();
+
+    public abstract String categoria();
 }

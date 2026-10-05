@@ -29,4 +29,9 @@ public class CamionetaCarga extends Vehiculo {
     public String informacion() {
         return "Camioneta de carga | Placa: " + placa + " | Marca: " + marca + " | Modelo: " + modelo + " | Tarifa diaria: Q" + String.format("%.2f", tarifaDiaria) + " | Estado: " + estado + " | Capacidad maxima: " + capMax + " toneladas";
     }
+
+    @Override
+    public String categoria() {
+        return "Camioneta de carga";
+    }
 }

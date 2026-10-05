@@ -38,4 +38,9 @@ public class Microbus extends Vehiculo {
     public String informacion() {
         return "Microbus | Placa: " + placa + " | Marca: " + marca + " | Modelo: " + modelo + " | Tarifa diaria: Q" + String.format("%.2f", tarifaDiaria) + " | Estado: " + estado + " | Pasajeros: " + pasajeros + " | Piloto: " + (piloto ? "Si" : "No");
     }
+
+    @Override
+    public String categoria() {
+        return "Microbus";
+    }
 }
