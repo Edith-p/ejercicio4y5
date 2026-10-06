@@ -24,8 +24,19 @@ public class ClienteCorporativo extends Cliente{
         return 3; 
     }
 
-    @Override 
+    @Override
     public String informacion() {
-        return String.format("Cliente | id: %s | Nombre: %s | Licencias: %s |Nombre Contacto: %s", id, nombre, licencias, nombreContacto);
+        return String.format(
+            "CLIENTE CORPORATIVO\n" +
+            "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n" +
+            "Identificador:  %s\n" +
+            "Empresa:        %s\n" +
+            "Contacto:       %s\n" +
+            "Licencias:      %s",
+            id,
+            nombre,
+            nombreContacto,
+            licencias
+        );
     }
 }

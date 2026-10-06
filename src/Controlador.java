@@ -46,21 +46,13 @@ public class Controlador {
                     consultarClientes();
                     break; 
 
-                case 5: 
-                {
-                    String placa = vista.leerString("Placa: ");
-                    String id = vista.leerString("Identificicacion del cliente: "); 
-                    int dias = vista.leerEntero("Días a alquilar: "); 
-                    cotizarAlquiler(placa, id, dias); 
+                case 5: {
+                    cotizarAlquiler(); 
                     break; 
                 }
 
-                case 6: 
-                {
-                    String placa = vista.leerString("Placa: ");
-                    String id = vista.leerString("Identificicacion del cliente: "); 
-                    int dias = vista.leerEntero("Días a alquilar: "); 
-                    confirmarAlquiler(placa, id, dias);
+                case 6: {
+                    confirmarAlquiler();
                     break; 
                 }
                 
@@ -113,190 +105,190 @@ public class Controlador {
         
 
     private void datosIniciales() {
-    // Automóviles
-    Automovil auto1 = new Automovil(
-        "P001AAA",
-        "Toyota",
-        "Corolla",
-        250,
-        5,
-        "Automatica"
-    );
+        // Automóviles
+        Automovil auto1 = new Automovil(
+            "P001AAA",
+            "Toyota",
+            "Corolla",
+            250,
+            5,
+            "Automatica"
+        );
 
-    Automovil auto2 = new Automovil(
-        "P002AAA",
-        "Honda",
-        "Civic",
-        225,
-        5,
-        "Manual"
-    );
+        Automovil auto2 = new Automovil(
+            "P002AAA",
+            "Honda",
+            "Civic",
+            225,
+            5,
+            "Manual"
+        );
 
-    // Queda cerca del umbral de 30 días.
-    auto1.aumentarDias(29);
+        // Queda cerca del umbral de 30 días.
+        auto1.aumentarDias(29);
 
-    vehiculos.add(auto1);
-    vehiculos.add(auto2);
+        vehiculos.add(auto1);
+        vehiculos.add(auto2);
 
-    // Motocicletas
-    Motocicleta moto1 = new Motocicleta(
-        "M001AAA",
-        "Honda",
-        "CBR",
-        125,
-        300
-    );
+        // Motocicletas
+        Motocicleta moto1 = new Motocicleta(
+            "M001AAA",
+            "Honda",
+            "CBR",
+            125,
+            300
+        );
 
-    Motocicleta moto2 = new Motocicleta(
-        "M002AAA",
-        "Yamaha",
-        "FZ",
-        100,
-        200
-    );
+        Motocicleta moto2 = new Motocicleta(
+            "M002AAA",
+            "Yamaha",
+            "FZ",
+            100,
+            200
+        );
 
-    vehiculos.add(moto1);
-    vehiculos.add(moto2);
+        vehiculos.add(moto1);
+        vehiculos.add(moto2);
 
-    // Camionetas de carga
-    CamionetaCarga camioneta1 =
-            new CamionetaCarga(
-                "C001AAA",
-                "Ford",
-                "Ranger",
-                200,
-                1.5
-            );
+        // Camionetas de carga
+        CamionetaCarga camioneta1 =
+                new CamionetaCarga(
+                    "C001AAA",
+                    "Ford",
+                    "Ranger",
+                    200,
+                    1.5
+                );
 
-    CamionetaCarga camioneta2 =
-            new CamionetaCarga(
-                "C002AAA",
-                "Toyota",
-                "Hilux",
-                225,
-                2.0
-            );
+        CamionetaCarga camioneta2 =
+                new CamionetaCarga(
+                    "C002AAA",
+                    "Toyota",
+                    "Hilux",
+                    225,
+                    2.0
+                );
 
-    vehiculos.add(camioneta1);
-    vehiculos.add(camioneta2);
+        vehiculos.add(camioneta1);
+        vehiculos.add(camioneta2);
 
-    // Microbuses
-    Microbus microbus1 = new Microbus(
-        "B001AAA",
-        "Toyota",
-        "Hiace",
-        450,
-        15,
-        true
-    );
+        // Microbuses
+        Microbus microbus1 = new Microbus(
+            "B001AAA",
+            "Toyota",
+            "Hiace",
+            450,
+            15,
+            true
+        );
 
-    Microbus microbus2 = new Microbus(
-        "B002AAA",
-        "Hyundai",
-        "H1",
-        375,
-        12,
-        false
-    );
+        Microbus microbus2 = new Microbus(
+            "B002AAA",
+            "Hyundai",
+            "H1",
+            375,
+            12,
+            false
+        );
 
-    vehiculos.add(microbus1);
-    vehiculos.add(microbus2);
+        vehiculos.add(microbus1);
+        vehiculos.add(microbus2);
 
-    // Licencias
-    ArrayList<String> licenciasA =
-            new ArrayList<>();
-    licenciasA.add("A");
+        // Licencias
+        ArrayList<String> licenciasA =
+                new ArrayList<>();
+        licenciasA.add("A");
 
-    ArrayList<String> licenciasM =
-            new ArrayList<>();
-    licenciasM.add("M");
+        ArrayList<String> licenciasM =
+                new ArrayList<>();
+        licenciasM.add("M");
 
-    ArrayList<String> licenciasB =
-            new ArrayList<>();
-    licenciasB.add("B");
+        ArrayList<String> licenciasB =
+                new ArrayList<>();
+        licenciasB.add("B");
 
-    ArrayList<String> licenciasC =
-            new ArrayList<>();
-    licenciasC.add("C");
+        ArrayList<String> licenciasC =
+                new ArrayList<>();
+        licenciasC.add("C");
 
-    // Clientes individuales
-    ClienteIndividual individual1 =
-            new ClienteIndividual(
-                "1234567890123",
-                "Ana López",
-                licenciasA
-            );
+        // Clientes individuales
+        ClienteIndividual individual1 =
+                new ClienteIndividual(
+                    "1234567890123",
+                    "Ana López",
+                    licenciasA
+                );
 
-    ClienteIndividual individual2 =
-            new ClienteIndividual(
-                "9876543210123",
-                "Carlos Pérez",
-                licenciasM
-            );
+        ClienteIndividual individual2 =
+                new ClienteIndividual(
+                    "9876543210123",
+                    "Carlos Pérez",
+                    licenciasM
+                );
 
-    clientes.add(individual1);
-    clientes.add(individual2);
+        clientes.add(individual1);
+        clientes.add(individual2);
 
-    // Clientes corporativos
-    ClienteCorporativo corporativo1 =
-            new ClienteCorporativo(
-                "1234567-8",
-                "Transportes GT",
-                licenciasB,
-                "María García"
-            );
+        // Clientes corporativos
+        ClienteCorporativo corporativo1 =
+                new ClienteCorporativo(
+                    "1234567-8",
+                    "Transportes GT",
+                    licenciasB,
+                    "María García"
+                );
 
-    ClienteCorporativo corporativo2 =
-            new ClienteCorporativo(
-                "8765432-1",
-                "Servicios Unidos",
-                licenciasC,
-                "José López"
-            );
+        ClienteCorporativo corporativo2 =
+                new ClienteCorporativo(
+                    "8765432-1",
+                    "Servicios Unidos",
+                    licenciasC,
+                    "José López"
+                );
 
-    clientes.add(corporativo1);
-    clientes.add(corporativo2);
+        clientes.add(corporativo1);
+        clientes.add(corporativo2);
 
-    // Tres alquileres anteriores de individual1.
-    // Permiten demostrar el descuento en su cuarto alquiler.
-    Alquiler anterior1 = new Alquiler(
-        1,
-        individual1,
-        auto2,
-        1,
-        225,
-        0,
-        225
-    );
+        // Tres alquileres anteriores de individual1.
+        // Permiten demostrar el descuento en su cuarto alquiler.
+        Alquiler anterior1 = new Alquiler(
+            1,
+            individual1,
+            auto2,
+            1,
+            225,
+            0,
+            225
+        );
 
-    Alquiler anterior2 = new Alquiler(
-        2,
-        individual1,
-        moto2,
-        2,
-        200,
-        0,
-        200
-    );
+        Alquiler anterior2 = new Alquiler(
+            2,
+            individual1,
+            moto2,
+            2,
+            200,
+            0,
+            200
+        );
 
-    Alquiler anterior3 = new Alquiler(
-        3,
-        individual1,
-        camioneta1,
-        1,
-        350,
-        0,
-        350
-    );
+        Alquiler anterior3 = new Alquiler(
+            3,
+            individual1,
+            camioneta1,
+            1,
+            350,
+            0,
+            350
+        );
 
-    anterior1.finalizar();
-    anterior2.finalizar();
-    anterior3.finalizar();
+        anterior1.finalizar();
+        anterior2.finalizar();
+        anterior3.finalizar();
 
-    alquileres.add(anterior1);
-    alquileres.add(anterior2);
-    alquileres.add(anterior3);
-}
+        alquileres.add(anterior1);
+        alquileres.add(anterior2);
+        alquileres.add(anterior3);
+    }
 
     public void nuevoRegistroVehiculo(){
         vista.mostrarMensaje("""
@@ -500,13 +492,33 @@ public class Controlador {
             "============================================================\n"
         );
     }
+
     public void consultarClientes() {
         if (clientes.isEmpty()) {
-            vista.mostrarMensaje("No hay clientes registrados :/");
+            vista.mostrarMensaje("No hay clientes registrados.");
             return;
         }
 
-        for (Cliente cliente : clientes) vista.mostrarMensaje(cliente.informacion());
+        vista.mostrarMensaje(
+            "\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n" +
+            "              CLIENTES DE RENTAMOVIL\n" +
+            "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n"
+        );
+
+        int numero = 1;
+
+        for (Cliente cliente : clientes) {
+            vista.mostrarMensaje(
+                "[" + numero + "] " + cliente.informacion()
+            );
+
+            vista.mostrarMensaje("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n");
+            numero++;
+        }
+
+        vista.mostrarMensaje("Total de clientes: " + clientes.size());
+
+        vista.mostrarMensaje("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n");
     }
 
     private Vehiculo buscarVehiculo(String placa) {
@@ -539,70 +551,140 @@ public class Controlador {
         return cantidad;
     }
 
-    public void cotizarAlquiler(String placa, String id, int dias) {
-        Vehiculo vehiculo = buscarVehiculo(placa);
-        Cliente cliente = buscarCliente(id);
+    public void cotizarAlquiler() {
 
-        if (vehiculo == null) {
-            vista.mostrarMensaje("El vehiculo no existe -_-");
-            return;
+        Vehiculo vehiculo = null;
+        Cliente cliente = null;
+        int dias = 0;
+
+        while (vehiculo == null) {
+            try {
+                String placa = vista.leerString("Ingrese la placa del vehiculo: ");
+                vehiculo = buscarVehiculo(placa);
+
+                if (vehiculo == null) {
+                    throw new IllegalArgumentException(
+                            "El vehiculo no existe -_-"
+                    );
+                }
+
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
-        if (cliente == null) {
-            vista.mostrarMensaje("El cliente no existe -_-");
-            return;
+        while (cliente == null) {
+            try {
+                String id = vista.leerString("Ingrese el ID del cliente: ");
+                cliente = buscarCliente(id);
+
+                if (cliente == null) {
+                    throw new IllegalArgumentException("El cliente no existe -_-");
+                }
+
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
-        if (dias <= 0) {
-            vista.mostrarMensaje("Los dias deben ser mayores a 0 -_-");
-            return;
+        boolean diasValidos = false;
+
+        while (!diasValidos) {
+            try {
+                dias = vista.leerEntero("Ingrese la cantidad de dias: ");
+
+                if (dias <= 0) {
+                    throw new IllegalArgumentException("Los dias deben ser mayores a 0 -_-");
+                }
+
+                diasValidos = true;
+
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
         double subtotal = vehiculo.calcularSubtotal(dias);
+
         int confirmados = contarAlquileresConfirmados(cliente);
+
         double descuento = cliente.calcularDescuento(subtotal, confirmados);
+
         double total = subtotal - descuento;
 
         vista.mostrarMensaje(vehiculo.informacion());
-        vista.mostrarMensaje(String.format("Subtotal: Q%.2f | Descuento: Q%.2f | Total: Q%.2f", subtotal, descuento, total));
+
+        vista.mostrarMensaje(String.format(
+                "Subtotal: Q%.2f | Descuento: Q%.2f | Total: Q%.2f",
+                subtotal,
+                descuento,
+                total
+        ));
 
         boolean puedeAlquilar = true;
 
         if (!vehiculo.getEstado().equalsIgnoreCase("Disponible")) {
-            vista.mostrarMensaje("No puede alquilarlo: el vehiculo no esta disponible :(");
+            vista.mostrarMensaje(
+                    "No puede alquilarlo: el vehiculo no esta disponible :("
+            );
             puedeAlquilar = false;
         }
 
         if (!licenciaValida(cliente, vehiculo)) {
-            vista.mostrarMensaje("No puede alquilarlo: licencia inadecuada :/");
+            vista.mostrarMensaje(
+                    "No puede alquilarlo: licencia inadecuada :/"
+            );
             puedeAlquilar = false;
         }
 
         if (contarAlquileresActivos(cliente) >= cliente.limiteAlquileres()) {
-            vista.mostrarMensaje("No puede alquilarlo: alcanzo el limite de alquileres activos :/");
+            vista.mostrarMensaje(
+                    "No puede alquilarlo: alcanzo el limite de alquileres activos :/"
+            );
             puedeAlquilar = false;
         }
 
-        if (puedeAlquilar) vista.mostrarMensaje("El cliente puede alquilar este vehiculo :D");
+        if (puedeAlquilar) {
+            vista.mostrarMensaje(
+                    "El cliente puede alquilar este vehiculo :D"
+            );
+        }
     }
 
-    public void confirmarAlquiler(String placa, String id, int dias) {
-        Vehiculo vehiculo = buscarVehiculo(placa);
-        Cliente cliente = buscarCliente(id);
+    public void confirmarAlquiler() {
+        Vehiculo vehiculo = null;
+        Cliente cliente = null;
+        int dias = 0;
 
-        if (vehiculo == null) {
-            vista.mostrarMensaje("El vehiculo no existe.");
-            return;
+        while (vehiculo == null) {
+            try {
+                String placa = vista.leerString("Placa: ");
+                vehiculo = buscarVehiculo(placa);
+                if (vehiculo == null) throw new IllegalArgumentException("El vehiculo no existe.");
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
-        if (cliente == null) {
-            vista.mostrarMensaje("El cliente no existe.");
-            return;
+        while (cliente == null) {
+            try {
+                String id = vista.leerString("Identificacion del cliente: ");
+                cliente = buscarCliente(id);
+                if (cliente == null) throw new IllegalArgumentException("El cliente no existe.");
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
-        if (dias <= 0) {
-            vista.mostrarMensaje("Los dias deben ser mayores a 0.");
-            return;
+        boolean diasValidos = false;
+        while (!diasValidos) {
+            try {
+                dias = vista.leerEntero("Dias a alquilar: ");
+                if (dias <= 0) throw new IllegalArgumentException("Los dias deben ser mayores a 0.");
+                diasValidos = true;
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
         if (!vehiculo.getEstado().equalsIgnoreCase("Disponible")) {

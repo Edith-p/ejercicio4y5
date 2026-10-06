@@ -30,9 +30,18 @@ public class ClienteIndividual extends Cliente {
         return 1; 
     }
 
-    @Override 
+    @Override
     public String informacion() {
-        return String.format("Cliente | id: %s | Nombre: %s | Licencias: %s ", id, nombre, licencias);
+        return String.format(
+            "CLIENTE INDIVIDUAL\n" +
+            "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n" +
+            "Identificador:  %s\n" +
+            "Nombre:         %s\n" +
+            "Licencias:      %s",
+            id,
+            nombre,
+            licencias
+        );
     }
 
 }
