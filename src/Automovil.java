@@ -4,6 +4,18 @@ public class Automovil extends Vehiculo {
 
     public Automovil(String placa, String marca, String modelo, double tarifaDiaria, int pasajeros, String transmision) {
         super(placa, marca, modelo, tarifaDiaria);
+
+
+        //validacion
+        if(pasajeros <= 0){
+            throw new IllegalArgumentException("La cantidad de pasajeros debe ser mayor a 0"); 
+        }
+        if (transmision == null || transmision.isBlank()){
+            throw new IllegalArgumentException("Se debe ingresar la transmision ");
+        }
+        if (!transmision.equalsIgnoreCase("Automática") && !transmision.equalsIgnoreCase("Automatica") && !transmision.equalsIgnoreCase("Manual")){
+            throw new IllegalArgumentException("La transcripción solo es o automática o manual :/");
+        }
         this.pasajeros = pasajeros;
         this.transmision = transmision;
     }

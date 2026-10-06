@@ -3,6 +3,11 @@ public class CamionetaCarga extends Vehiculo {
 
     public CamionetaCarga(String placa, String marca, String modelo, double tarifaDiaria, double capMax) {
         super(placa, marca, modelo, tarifaDiaria);
+        //validacion
+        if (capMax <= 0){
+            throw new IllegalArgumentException("La capacidad máxima tiene que ser mayor a 0."); 
+        }
+
         this.capMax = capMax;
     }
 

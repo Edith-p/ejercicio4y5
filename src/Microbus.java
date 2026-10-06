@@ -4,6 +4,12 @@ public class Microbus extends Vehiculo {
 
     public Microbus(String placa, String marca, String modelo, double tarifaDiaria, int pasajeros, boolean piloto) {
         super(placa, marca, modelo, tarifaDiaria);
+        
+        //validacion
+        if(pasajeros <= 0){
+            throw new IllegalArgumentException("La cantidad de pasajeros debe ser mayor a 0"); 
+        }
+        
         this.pasajeros = pasajeros;
         this.piloto = piloto;
     }

@@ -3,6 +3,12 @@ public class Motocicleta extends Vehiculo {
 
     public Motocicleta(String placa, String marca, String modelo, double tarifaDiaria, int cilindraje) {
         super(placa, marca, modelo, tarifaDiaria);
+        //validacion 
+        if (cilindraje<=0){
+            throw new IllegalArgumentException("El cilindraje debe ser mayor a 0. :("); 
+        }
+        
+        
         this.cilindraje = cilindraje;
     }
 

@@ -7,7 +7,7 @@ public class Vista {
         scanner = new Scanner(System.in);
     }
 
-    public void mostrarMenu() {
+    public int mostrarMenu() {
         System.out.println("""
                 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
                               RENTAMOVIL 
@@ -17,7 +17,7 @@ public class Vista {
                 3. Consultar flota
                 4. Consultar clientes
                 5. Cotizar alquiler
-                6. Confirmar alquiler
+                6. Confirmar/cancelar alquiler
                 7. Registrar devolucion
                 8. Finalizar mantenimiento
                 9. Reporte de vehiculos
@@ -28,6 +28,8 @@ public class Vista {
                 0. Salir
                 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
                 """);
+
+                return leerEntero("Seleccione una opcion: ");
     }
 
     public String leerString(String mensaje) {
