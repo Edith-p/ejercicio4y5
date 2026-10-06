@@ -803,28 +803,49 @@ public class Controlador {
                 case "Automovil":
                     autos++;
                     break;
-
                 case "Motocicleta":
                     motos++;
                     break;
-
                 case "Camioneta de carga":
-                camionetas++;
-                break;
-
+                    camionetas++;
+                    break;
                 case "Microbus":
-                microbuses++;
-                break;
+                    microbuses++;
+                    break;
             }
-
 
             if (vehiculo.getEstado().equalsIgnoreCase("Disponible")) disponibles++;
             else if (vehiculo.getEstado().equalsIgnoreCase("Alquilado")) alquilados++;
             else if (vehiculo.getEstado().equalsIgnoreCase("En mantenimiento")) mantenimiento++;
         }
 
-        vista.mostrarMensaje(String.format("Automoviles: %d | Motocicletas: %d | Camionetas: %d | Microbuses: %d", autos, motos, camionetas, microbuses));
-        vista.mostrarMensaje(String.format("Disponibles: %d | Alquilados: %d | En mantenimiento: %d", disponibles, alquilados, mantenimiento));
+        vista.mostrarMensaje(String.format("""
+                
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+                            REPORTE DE VEHICULOS
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+                
+                VEHICULOS POR CATEGORIA
+                Automoviles:          %d
+                Motocicletas:         %d
+                Camionetas de carga:  %d
+                Microbuses:           %d
+                
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+                
+                VEHICULOS POR ESTADO
+                Disponibles:          %d
+                Alquilados:           %d
+                En mantenimiento:     %d
+                
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+                Total de vehiculos:   %d
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+                """,
+                autos, motos, camionetas, microbuses,
+                disponibles, alquilados, mantenimiento,
+                vehiculos.size()
+        ));
     }
 
     public void reporteIngresos() {
