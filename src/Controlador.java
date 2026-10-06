@@ -500,13 +500,33 @@ public class Controlador {
             "============================================================\n"
         );
     }
+
     public void consultarClientes() {
         if (clientes.isEmpty()) {
-            vista.mostrarMensaje("No hay clientes registrados :/");
+            vista.mostrarMensaje("No hay clientes registrados.");
             return;
         }
 
-        for (Cliente cliente : clientes) vista.mostrarMensaje(cliente.informacion());
+        vista.mostrarMensaje(
+            "\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n" +
+            "              CLIENTES DE RENTAMOVIL\n" +
+            "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n"
+        );
+
+        int numero = 1;
+
+        for (Cliente cliente : clientes) {
+            vista.mostrarMensaje(
+                "[" + numero + "] " + cliente.informacion()
+            );
+
+            vista.mostrarMensaje("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n");
+            numero++;
+        }
+
+        vista.mostrarMensaje("Total de clientes: " + clientes.size());
+
+        vista.mostrarMensaje("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n");
     }
 
     private Vehiculo buscarVehiculo(String placa) {
