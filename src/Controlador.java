@@ -4,7 +4,6 @@ import java.util.List;
 public class Controlador {
     private Vista vista;
     private double ingresosTotal;
-    private double ingresosCategorias;
     private double descuentosTotales;
     private List<Vehiculo> vehiculos;
     private List<Cliente> clientes;
@@ -13,7 +12,6 @@ public class Controlador {
     public Controlador(Vista vista) {
         this.vista = vista;
         this.ingresosTotal = 0;
-        this.ingresosCategorias = 0;
         this.descuentosTotales = 0;
         this.vehiculos = new ArrayList<>();
         this.clientes = new ArrayList<>();
@@ -46,21 +44,13 @@ public class Controlador {
                     consultarClientes();
                     break; 
 
-                case 5: 
-                {
-                    String placa = vista.leerString("Placa: ");
-                    String id = vista.leerString("Identificicacion del cliente: "); 
-                    int dias = vista.leerEntero("Días a alquilar: "); 
-                    cotizarAlquiler(placa, id, dias); 
+                case 5: {
+                    cotizarAlquiler(); 
                     break; 
                 }
 
-                case 6: 
-                {
-                    String placa = vista.leerString("Placa: ");
-                    String id = vista.leerString("Identificicacion del cliente: "); 
-                    int dias = vista.leerEntero("Días a alquilar: "); 
-                    confirmarAlquiler(placa, id, dias);
+                case 6: {
+                    confirmarAlquiler();
                     break; 
                 }
                 
@@ -559,70 +549,140 @@ public class Controlador {
         return cantidad;
     }
 
-    public void cotizarAlquiler(String placa, String id, int dias) {
-        Vehiculo vehiculo = buscarVehiculo(placa);
-        Cliente cliente = buscarCliente(id);
+    public void cotizarAlquiler() {
 
-        if (vehiculo == null) {
-            vista.mostrarMensaje("El vehiculo no existe -_-");
-            return;
+        Vehiculo vehiculo = null;
+        Cliente cliente = null;
+        int dias = 0;
+
+        while (vehiculo == null) {
+            try {
+                String placa = vista.leerString("Ingrese la placa del vehiculo: ");
+                vehiculo = buscarVehiculo(placa);
+
+                if (vehiculo == null) {
+                    throw new IllegalArgumentException(
+                            "El vehiculo no existe -_-"
+                    );
+                }
+
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
-        if (cliente == null) {
-            vista.mostrarMensaje("El cliente no existe -_-");
-            return;
+        while (cliente == null) {
+            try {
+                String id = vista.leerString("Ingrese el ID del cliente: ");
+                cliente = buscarCliente(id);
+
+                if (cliente == null) {
+                    throw new IllegalArgumentException("El cliente no existe -_-");
+                }
+
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
-        if (dias <= 0) {
-            vista.mostrarMensaje("Los dias deben ser mayores a 0 -_-");
-            return;
+        boolean diasValidos = false;
+
+        while (!diasValidos) {
+            try {
+                dias = vista.leerEntero("Ingrese la cantidad de dias: ");
+
+                if (dias <= 0) {
+                    throw new IllegalArgumentException("Los dias deben ser mayores a 0 -_-");
+                }
+
+                diasValidos = true;
+
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
         double subtotal = vehiculo.calcularSubtotal(dias);
+
         int confirmados = contarAlquileresConfirmados(cliente);
+
         double descuento = cliente.calcularDescuento(subtotal, confirmados);
+
         double total = subtotal - descuento;
 
         vista.mostrarMensaje(vehiculo.informacion());
-        vista.mostrarMensaje(String.format("Subtotal: Q%.2f | Descuento: Q%.2f | Total: Q%.2f", subtotal, descuento, total));
+
+        vista.mostrarMensaje(String.format(
+                "Subtotal: Q%.2f | Descuento: Q%.2f | Total: Q%.2f",
+                subtotal,
+                descuento,
+                total
+        ));
 
         boolean puedeAlquilar = true;
 
         if (!vehiculo.getEstado().equalsIgnoreCase("Disponible")) {
-            vista.mostrarMensaje("No puede alquilarlo: el vehiculo no esta disponible :(");
+            vista.mostrarMensaje(
+                    "No puede alquilarlo: el vehiculo no esta disponible :("
+            );
             puedeAlquilar = false;
         }
 
         if (!licenciaValida(cliente, vehiculo)) {
-            vista.mostrarMensaje("No puede alquilarlo: licencia inadecuada :/");
+            vista.mostrarMensaje(
+                    "No puede alquilarlo: licencia inadecuada :/"
+            );
             puedeAlquilar = false;
         }
 
         if (contarAlquileresActivos(cliente) >= cliente.limiteAlquileres()) {
-            vista.mostrarMensaje("No puede alquilarlo: alcanzo el limite de alquileres activos :/");
+            vista.mostrarMensaje(
+                    "No puede alquilarlo: alcanzo el limite de alquileres activos :/"
+            );
             puedeAlquilar = false;
         }
 
-        if (puedeAlquilar) vista.mostrarMensaje("El cliente puede alquilar este vehiculo :D");
+        if (puedeAlquilar) {
+            vista.mostrarMensaje(
+                    "El cliente puede alquilar este vehiculo :D"
+            );
+        }
     }
 
-    public void confirmarAlquiler(String placa, String id, int dias) {
-        Vehiculo vehiculo = buscarVehiculo(placa);
-        Cliente cliente = buscarCliente(id);
+    public void confirmarAlquiler() {
+        Vehiculo vehiculo = null;
+        Cliente cliente = null;
+        int dias = 0;
 
-        if (vehiculo == null) {
-            vista.mostrarMensaje("El vehiculo no existe.");
-            return;
+        while (vehiculo == null) {
+            try {
+                String placa = vista.leerString("Placa: ");
+                vehiculo = buscarVehiculo(placa);
+                if (vehiculo == null) throw new IllegalArgumentException("El vehiculo no existe.");
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
-        if (cliente == null) {
-            vista.mostrarMensaje("El cliente no existe.");
-            return;
+        while (cliente == null) {
+            try {
+                String id = vista.leerString("Identificacion del cliente: ");
+                cliente = buscarCliente(id);
+                if (cliente == null) throw new IllegalArgumentException("El cliente no existe.");
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
-        if (dias <= 0) {
-            vista.mostrarMensaje("Los dias deben ser mayores a 0.");
-            return;
+        boolean diasValidos = false;
+        while (!diasValidos) {
+            try {
+                dias = vista.leerEntero("Dias a alquilar: ");
+                if (dias <= 0) throw new IllegalArgumentException("Los dias deben ser mayores a 0.");
+                diasValidos = true;
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
         }
 
         if (!vehiculo.getEstado().equalsIgnoreCase("Disponible")) {
