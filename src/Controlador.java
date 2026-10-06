@@ -468,13 +468,38 @@ public class Controlador {
 
     public void consultarFlota() {
         if (vehiculos.isEmpty()) {
-            vista.mostrarMensaje("No hay vehiculos registrados :/");
+            vista.mostrarMensaje("No hay vehiculos registrados.");
             return;
         }
 
-        for (Vehiculo vehiculo : vehiculos) vista.mostrarMensaje(vehiculo.informacion());
-    }
+        vista.mostrarMensaje("""
+                
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+                                FLOTA DE RENTAMOVIL
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-""");
 
+        int numero = 1;
+
+        for (Vehiculo vehiculo : vehiculos) {
+            vista.mostrarMensaje(
+                "\n[" + numero + "] " + vehiculo.informacion()
+            );
+
+            vista.mostrarMensaje(
+                "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-"
+            );
+
+            numero++;
+        }
+
+        vista.mostrarMensaje(
+            "\nTotal de vehiculos: " + vehiculos.size()
+        );
+
+        vista.mostrarMensaje(
+            "============================================================\n"
+        );
+    }
     public void consultarClientes() {
         if (clientes.isEmpty()) {
             vista.mostrarMensaje("No hay clientes registrados :/");
@@ -717,15 +742,50 @@ public class Controlador {
         vista.mostrarMensaje(String.format("Disponibles: %d | Alquilados: %d | En mantenimiento: %d", disponibles, alquilados, mantenimiento));
     }
 
-    // Este método debe de mejorarse
     public void reporteIngresos() {
-        vista.mostrarMensaje("===== INGRESOS POR CATEGORIA =====");
+        double automoviles = 0;
+        double motocicletas = 0;
+        double camionetas = 0;
+        double microbuses = 0;
 
         for (Alquiler alquiler : alquileres) {
-            vista.mostrarMensaje(String.format("%s | Q%.2f", alquiler.getVehiculo().categoria(), alquiler.getTotal()));
+            String categoria = alquiler.getVehiculo().categoria();
+
+            switch (categoria) {
+                case "Automovil":
+                    automoviles += alquiler.getTotal();
+                    break;
+
+                case "Motocicleta":
+                    motocicletas += alquiler.getTotal();
+                    break;
+
+                case "Camioneta de carga":
+                    camionetas += alquiler.getTotal();
+                    break;
+
+                case "Microbus":
+                    microbuses += alquiler.getTotal();
+                    break;
+            }
         }
 
-        vista.mostrarMensaje(String.format("Ingresos totales: Q%.2f", ingresosTotal));
+        vista.mostrarMensaje(String.format("""
+                
+                +-+-+-+-+-+ REPORTE DE INGRESOS +-+-+-+-+-+
+                Automoviles:          Q%.2f
+                Motocicletas:         Q%.2f
+                Camionetas de carga:  Q%.2f
+                Microbuses:           Q%.2f
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                Total de ingresos:    Q%.2f
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                """,
+                automoviles,
+                motocicletas,
+                camionetas,
+                microbuses,
+                ingresosTotal));
     }
 
     public void reporteDescuentos() {

@@ -16,12 +16,7 @@ public class ClienteCorporativo extends Cliente{
       
     @Override 
     public double calcularDescuento(double subtotal, int alquileresConfirmados){
-
-        if (alquileresConfirmados>= 3){
-            double descuento = subtotal * 0.10; 
-            return descuento; 
-        }
-    return 0; 
+        return subtotal * 0.10;
     }
 
     @Override 
