@@ -381,7 +381,31 @@ public class Controlador {
             return; 
         }
 
-        String id = vista.leerString("Identificación: "); 
+        String id = null;
+
+        while (id == null) {
+            try {
+                String idIngresado = vista.leerString("Identificacion: ");
+
+                if (tipo == 1 && (!idIngresado.matches("\\d{13}"))) {
+                    throw new IllegalArgumentException("El DPI debe tener exactamente 13 digitos.");
+                }
+
+                if (idIngresado.isBlank()) {
+                    throw new IllegalArgumentException("La identificacion no puede estar vacia.");
+                }
+
+                if (buscarCliente(idIngresado) != null) {
+                    throw new IllegalArgumentException("Ya existe un cliente con ese identificador.");
+                }
+
+                id = idIngresado;
+
+            } catch (IllegalArgumentException e) {
+                vista.mostrarMensaje(e.getMessage());
+            }
+        }
+
         String nombre; 
 
         if (tipo == 1){
