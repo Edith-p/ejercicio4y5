@@ -60,4 +60,9 @@ public class Microbus extends Vehiculo {
     public String categoria() {
         return "Microbus";
     }
+
+    @Override 
+    public int indiceCategoria(){
+        return 3; 
+    }
 }

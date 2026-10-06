@@ -4,6 +4,7 @@ import java.util.List;
 public class Controlador {
     private Vista vista;
     private double ingresosTotal;
+    private double[] ingresosCategorias;
     private double descuentosTotales;
     private List<Vehiculo> vehiculos;
     private List<Cliente> clientes;
@@ -12,6 +13,7 @@ public class Controlador {
     public Controlador(Vista vista) {
         this.vista = vista;
         this.ingresosTotal = 0;
+        this.ingresosCategorias = new double[4];
         this.descuentosTotales = 0;
         this.vehiculos = new ArrayList<>();
         this.clientes = new ArrayList<>();
@@ -719,6 +721,9 @@ public class Controlador {
         alquileres.add(alquiler);
         vehiculo.setEstado("Alquilado");
         ingresosTotal += total;
+
+        ingresosCategorias[vehiculo.indiceCategoria()] += total; 
+
         descuentosTotales += descuento;
 
         vista.mostrarMensaje("Alquiler confirmado. Correlativo: " + correlativo);
@@ -823,33 +828,7 @@ public class Controlador {
     }
 
     public void reporteIngresos() {
-        double automoviles = 0;
-        double motocicletas = 0;
-        double camionetas = 0;
-        double microbuses = 0;
-
-        for (Alquiler alquiler : alquileres) {
-            String categoria = alquiler.getVehiculo().categoria();
-
-            switch (categoria) {
-                case "Automovil":
-                    automoviles += alquiler.getTotal();
-                    break;
-
-                case "Motocicleta":
-                    motocicletas += alquiler.getTotal();
-                    break;
-
-                case "Camioneta de carga":
-                    camionetas += alquiler.getTotal();
-                    break;
-
-                case "Microbus":
-                    microbuses += alquiler.getTotal();
-                    break;
-            }
-        }
-
+    
         vista.mostrarMensaje(String.format("""
                 
                 +-+-+-+-+-+ REPORTE DE INGRESOS +-+-+-+-+-+
@@ -861,10 +840,10 @@ public class Controlador {
                 Total de ingresos:    Q%.2f
                 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
                 """,
-                automoviles,
-                motocicletas,
-                camionetas,
-                microbuses,
+                ingresosCategorias[0], 
+                ingresosCategorias[1],
+                ingresosCategorias[2],
+                ingresosCategorias[3],
                 ingresosTotal));
     }
 

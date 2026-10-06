@@ -52,4 +52,9 @@ public class Motocicleta extends Vehiculo {
     public String categoria() {
         return "Motocicleta";
     }
+
+    @Override 
+    public int indiceCategoria(){
+        return 1; 
+    }
 }
