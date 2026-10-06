@@ -47,7 +47,18 @@ public class Automovil extends Vehiculo {
 
     @Override
     public String informacion() {
-        return String.format("Automovil | Placa: %s | Marca: %s | Modelo: %s | Tarifa diaria: Q%.2f | Estado: %s | Pasajeros: %d | Transmision: %s", placa, marca, modelo, tarifaDiaria, estado, pasajeros, transmision);
+        return String.format("""
+                AUTOMOVIL
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+                Placa:          %s
+                Marca:          %s
+                Modelo:         %s
+                Tarifa diaria:  Q%.2f
+                Estado:         %s
+                Pasajeros:      %d
+                Transmision:    %s""",
+                placa, marca, modelo, tarifaDiaria,
+                estado, pasajeros, transmision);
     }
 
     @Override

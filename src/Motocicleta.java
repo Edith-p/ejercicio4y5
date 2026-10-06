@@ -35,8 +35,18 @@ public class Motocicleta extends Vehiculo {
 
     @Override
     public String informacion() {
-        return "Motocicleta | Placa: " + placa + " | Marca: " + marca + " | Modelo: " + modelo + " | Tarifa diaria: Q" + String.format("%.2f", tarifaDiaria) + " | Estado: " + estado + " | Cilindraje: " + cilindraje + " cc";
-    }
+        return String.format("""
+                MOTOCICLETA
+                +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+                Placa:          %s
+                Marca:          %s
+                Modelo:         %s
+                Tarifa diaria:  Q%.2f
+                Estado:         %s
+                Cilindraje:     %d cc""",
+                placa, marca, modelo, tarifaDiaria,
+                estado, cilindraje);
+}
     
     @Override
     public String categoria() {
