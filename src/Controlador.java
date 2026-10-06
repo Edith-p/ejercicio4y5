@@ -113,190 +113,190 @@ public class Controlador {
         
 
     private void datosIniciales() {
-    // Automóviles
-    Automovil auto1 = new Automovil(
-        "P001AAA",
-        "Toyota",
-        "Corolla",
-        250,
-        5,
-        "Automatica"
-    );
+        // Automóviles
+        Automovil auto1 = new Automovil(
+            "P001AAA",
+            "Toyota",
+            "Corolla",
+            250,
+            5,
+            "Automatica"
+        );
 
-    Automovil auto2 = new Automovil(
-        "P002AAA",
-        "Honda",
-        "Civic",
-        225,
-        5,
-        "Manual"
-    );
+        Automovil auto2 = new Automovil(
+            "P002AAA",
+            "Honda",
+            "Civic",
+            225,
+            5,
+            "Manual"
+        );
 
-    // Queda cerca del umbral de 30 días.
-    auto1.aumentarDias(29);
+        // Queda cerca del umbral de 30 días.
+        auto1.aumentarDias(29);
 
-    vehiculos.add(auto1);
-    vehiculos.add(auto2);
+        vehiculos.add(auto1);
+        vehiculos.add(auto2);
 
-    // Motocicletas
-    Motocicleta moto1 = new Motocicleta(
-        "M001AAA",
-        "Honda",
-        "CBR",
-        125,
-        300
-    );
+        // Motocicletas
+        Motocicleta moto1 = new Motocicleta(
+            "M001AAA",
+            "Honda",
+            "CBR",
+            125,
+            300
+        );
 
-    Motocicleta moto2 = new Motocicleta(
-        "M002AAA",
-        "Yamaha",
-        "FZ",
-        100,
-        200
-    );
+        Motocicleta moto2 = new Motocicleta(
+            "M002AAA",
+            "Yamaha",
+            "FZ",
+            100,
+            200
+        );
 
-    vehiculos.add(moto1);
-    vehiculos.add(moto2);
+        vehiculos.add(moto1);
+        vehiculos.add(moto2);
 
-    // Camionetas de carga
-    CamionetaCarga camioneta1 =
-            new CamionetaCarga(
-                "C001AAA",
-                "Ford",
-                "Ranger",
-                200,
-                1.5
-            );
+        // Camionetas de carga
+        CamionetaCarga camioneta1 =
+                new CamionetaCarga(
+                    "C001AAA",
+                    "Ford",
+                    "Ranger",
+                    200,
+                    1.5
+                );
 
-    CamionetaCarga camioneta2 =
-            new CamionetaCarga(
-                "C002AAA",
-                "Toyota",
-                "Hilux",
-                225,
-                2.0
-            );
+        CamionetaCarga camioneta2 =
+                new CamionetaCarga(
+                    "C002AAA",
+                    "Toyota",
+                    "Hilux",
+                    225,
+                    2.0
+                );
 
-    vehiculos.add(camioneta1);
-    vehiculos.add(camioneta2);
+        vehiculos.add(camioneta1);
+        vehiculos.add(camioneta2);
 
-    // Microbuses
-    Microbus microbus1 = new Microbus(
-        "B001AAA",
-        "Toyota",
-        "Hiace",
-        450,
-        15,
-        true
-    );
+        // Microbuses
+        Microbus microbus1 = new Microbus(
+            "B001AAA",
+            "Toyota",
+            "Hiace",
+            450,
+            15,
+            true
+        );
 
-    Microbus microbus2 = new Microbus(
-        "B002AAA",
-        "Hyundai",
-        "H1",
-        375,
-        12,
-        false
-    );
+        Microbus microbus2 = new Microbus(
+            "B002AAA",
+            "Hyundai",
+            "H1",
+            375,
+            12,
+            false
+        );
 
-    vehiculos.add(microbus1);
-    vehiculos.add(microbus2);
+        vehiculos.add(microbus1);
+        vehiculos.add(microbus2);
 
-    // Licencias
-    ArrayList<String> licenciasA =
-            new ArrayList<>();
-    licenciasA.add("A");
+        // Licencias
+        ArrayList<String> licenciasA =
+                new ArrayList<>();
+        licenciasA.add("A");
 
-    ArrayList<String> licenciasM =
-            new ArrayList<>();
-    licenciasM.add("M");
+        ArrayList<String> licenciasM =
+                new ArrayList<>();
+        licenciasM.add("M");
 
-    ArrayList<String> licenciasB =
-            new ArrayList<>();
-    licenciasB.add("B");
+        ArrayList<String> licenciasB =
+                new ArrayList<>();
+        licenciasB.add("B");
 
-    ArrayList<String> licenciasC =
-            new ArrayList<>();
-    licenciasC.add("C");
+        ArrayList<String> licenciasC =
+                new ArrayList<>();
+        licenciasC.add("C");
 
-    // Clientes individuales
-    ClienteIndividual individual1 =
-            new ClienteIndividual(
-                "1234567890123",
-                "Ana López",
-                licenciasA
-            );
+        // Clientes individuales
+        ClienteIndividual individual1 =
+                new ClienteIndividual(
+                    "1234567890123",
+                    "Ana López",
+                    licenciasA
+                );
 
-    ClienteIndividual individual2 =
-            new ClienteIndividual(
-                "9876543210123",
-                "Carlos Pérez",
-                licenciasM
-            );
+        ClienteIndividual individual2 =
+                new ClienteIndividual(
+                    "9876543210123",
+                    "Carlos Pérez",
+                    licenciasM
+                );
 
-    clientes.add(individual1);
-    clientes.add(individual2);
+        clientes.add(individual1);
+        clientes.add(individual2);
 
-    // Clientes corporativos
-    ClienteCorporativo corporativo1 =
-            new ClienteCorporativo(
-                "1234567-8",
-                "Transportes GT",
-                licenciasB,
-                "María García"
-            );
+        // Clientes corporativos
+        ClienteCorporativo corporativo1 =
+                new ClienteCorporativo(
+                    "1234567-8",
+                    "Transportes GT",
+                    licenciasB,
+                    "María García"
+                );
 
-    ClienteCorporativo corporativo2 =
-            new ClienteCorporativo(
-                "8765432-1",
-                "Servicios Unidos",
-                licenciasC,
-                "José López"
-            );
+        ClienteCorporativo corporativo2 =
+                new ClienteCorporativo(
+                    "8765432-1",
+                    "Servicios Unidos",
+                    licenciasC,
+                    "José López"
+                );
 
-    clientes.add(corporativo1);
-    clientes.add(corporativo2);
+        clientes.add(corporativo1);
+        clientes.add(corporativo2);
 
-    // Tres alquileres anteriores de individual1.
-    // Permiten demostrar el descuento en su cuarto alquiler.
-    Alquiler anterior1 = new Alquiler(
-        1,
-        individual1,
-        auto2,
-        1,
-        225,
-        0,
-        225
-    );
+        // Tres alquileres anteriores de individual1.
+        // Permiten demostrar el descuento en su cuarto alquiler.
+        Alquiler anterior1 = new Alquiler(
+            1,
+            individual1,
+            auto2,
+            1,
+            225,
+            0,
+            225
+        );
 
-    Alquiler anterior2 = new Alquiler(
-        2,
-        individual1,
-        moto2,
-        2,
-        200,
-        0,
-        200
-    );
+        Alquiler anterior2 = new Alquiler(
+            2,
+            individual1,
+            moto2,
+            2,
+            200,
+            0,
+            200
+        );
 
-    Alquiler anterior3 = new Alquiler(
-        3,
-        individual1,
-        camioneta1,
-        1,
-        350,
-        0,
-        350
-    );
+        Alquiler anterior3 = new Alquiler(
+            3,
+            individual1,
+            camioneta1,
+            1,
+            350,
+            0,
+            350
+        );
 
-    anterior1.finalizar();
-    anterior2.finalizar();
-    anterior3.finalizar();
+        anterior1.finalizar();
+        anterior2.finalizar();
+        anterior3.finalizar();
 
-    alquileres.add(anterior1);
-    alquileres.add(anterior2);
-    alquileres.add(anterior3);
-}
+        alquileres.add(anterior1);
+        alquileres.add(anterior2);
+        alquileres.add(anterior3);
+    }
 
     public void nuevoRegistroVehiculo(){
         vista.mostrarMensaje("""
