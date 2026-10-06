@@ -74,4 +74,6 @@ public abstract class Vehiculo {
     public abstract String informacion();
 
     public abstract String categoria();
+
+    public abstract int indiceCategoria(); 
 }

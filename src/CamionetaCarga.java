@@ -49,4 +49,9 @@ public class CamionetaCarga extends Vehiculo {
     public String categoria() {
         return "Camioneta de carga";
     }
+
+    @Override 
+    public int indiceCategoria(){
+        return 2; 
+    }
 }

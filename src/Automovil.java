@@ -65,4 +65,9 @@ public class Automovil extends Vehiculo {
     public String categoria() {
         return "Automovil";
     }
+
+    @Override 
+    public int indiceCategoria(){
+        return 0; 
+    }
 }
